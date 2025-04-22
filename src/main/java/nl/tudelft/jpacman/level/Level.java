@@ -170,9 +170,18 @@ public class Level {
      *            The direction to move the unit in.
      */
     public void move(Unit unit, Direction direction) {
-        assert unit != null;
-        assert direction != null;
-        assert unit.hasSquare();
+    	if (unit == null) {
+    	    throw new IllegalArgumentException("unit no puede ser null");
+    	}
+
+    	if (direction == null) {
+    	    throw new IllegalArgumentException("direction no puede ser null");
+    	}
+
+    	if (!unit.hasSquare()) {
+    	    throw new IllegalStateException("unit debe tener un cuadrado");
+    	}
+
 
         if (!isInProgress()) {
             return;
